@@ -8,6 +8,7 @@ class SeminarsController extends AppController {
   }
 
   public function index() {
-    
+    $seminars = $this->Seminars->find('all');
+    $this->set('seminars',$seminars);
   }
 }
