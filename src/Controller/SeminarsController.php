@@ -1,6 +1,8 @@
 <?php
 namespace App\Controller;
 
+use Cake\ORM\TableRegistry;
+
 class SeminarsController extends AppController {
   public $paginate = [
     'limit' => 20,
@@ -11,18 +13,21 @@ class SeminarsController extends AppController {
 
   public function initialize() {
     $this->name = 'Seminars';
+    $this->Users = TableRegistry::get('users');
     $this->viewBuilder()->Layout('Seminars');
     $this->loadComponent('paginator');
   }
 
   public function index() {
     $this->set('entity',$this->Seminars->newEntity());
+    $this->set('user',$this->Users->newEntity());
     $seminars = $this->paginate($this->Seminars);
     $this->set('seminars',$seminars);
   }
 
   public function search() {
     $this->set('entity',$this->Seminars->newEntity());
+    $this->set('user',$this->Users->newEntity());
     if ($this->request->is('get')) {
       $name = $this->request->query['name'];
       $place = $this->request->query['place'];

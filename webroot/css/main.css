@@ -2,6 +2,15 @@
   margin-top: 30px;
 }
 
+.search-box-submit {
+  margin-top: 20px;
+  width: 100%;
+}
+
+.seminar-index-table {
+  margin-top: 30px;
+}
+
 .pagination {
   font-size: 20px;
 }
@@ -18,8 +27,64 @@ header {
 .header-title {
   font-size: 20px;
   font-weight: bold;
+  text-decoration: none;
+  color: black;
+}
+
+.header-title:hover {
+  text-decoration: none;
+  color: black;
+  opacity: 0.8;
 }
 
 .register {
   margin-right: 10px;
+}
+
+
+.register-modal, .login-modal {
+  height: 100vh;
+  width: 100vw;
+  background-color: #c0c0c0;
+  position: fixed;
+  top: -100%;
+  left: 0;
+  opacity: 0.8;
+}
+
+.register-modal-wrap, .login-modal-wrap {
+  height: 100vh;
+  width: 100vw;
+  position: fixed;
+  top: -100%;
+  left: 0;
+}
+
+.register-modal-content, .login-modal-content {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+  height: 50vh;
+  width: 30vw;
+  background-color: white;
+}
+
+.register-modal-content-wrap, .login-modal-content-wrap {
+  position: relative;
+  height: 100%;
+  width: 100%;
+}
+
+.register-modal-content-wrap .close, .login-modal-content-wrap .close {
+  position: absolute;
+  top: 0;
+  right: 0;
+  font-size: 40px;
+  font-weight: bold;
+}
+
+.register-modal-content-wrap .close:hover, .login-modal-content-wrap .close:hover {
+  cursor: pointer;
+  opacity: 0.8;
 }

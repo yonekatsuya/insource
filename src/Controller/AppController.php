@@ -45,11 +45,36 @@ class AppController extends Controller
             'enableBeforeRedirect' => false,
         ]);
         $this->loadComponent('Flash');
+        $this->loadComponent('Auth', [
+            'loginAction' => [
+                'controller' => 'Users',
+                'action' => 'login'
+            ],
+            'loginRedirect' => [
+                'controller' => 'Seminars',
+                'action' => 'index'
+            ],
+            'logoutRedirect' => [
+                'controller' => 'Seminars',
+                'action' => 'index',
+                'home'
+            ],
+            'authenticate' => [
+                'Form' => [
+                    'fields' => ['name' => 'email', 'password' => 'pass']
+                ]
+            ],
+        ]);
 
         /*
          * Enable the following component for recommended CakePHP security settings.
          * see https://book.cakephp.org/3.0/en/controllers/components/security.html
          */
         //$this->loadComponent('Security');
+    }
+
+    public function beforeFilter(Event $event)
+    {
+        //$this->Auth->allow(['add']);
     }
 }

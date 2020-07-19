@@ -19,7 +19,7 @@
     <div class="container">
       <div class="row justify-content-between">
         <div class="align-self-end">
-          <div class="header-title">研修管理システム</div>
+          <?= $this->Html->link('研修管理システム','/seminars',['class'=>'header-title']) ?>
         </div>
         <div>
           <button class="btn btn-info register">新規登録</button>
@@ -29,11 +29,16 @@
     </div>
   </header>
 
+  <div class="bg-warning text-center"><?= $this->Flash->render() ?></div>
+
   <div class="container">
     <div class="content">
       <?= $this->fetch('content') ?>
     </div>
   </div>
+
+  <?= $this->element('Seminars/registerModal') ?>
+  <?= $this->element('Seminars/loginModal') ?>
 
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
