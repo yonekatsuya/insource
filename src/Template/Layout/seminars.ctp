@@ -15,6 +15,20 @@
   ?>
 </head>
 <body>
+  <header class="header">
+    <div class="container">
+      <div class="row justify-content-between">
+        <div class="align-self-end">
+          <div class="header-title">研修管理システム</div>
+        </div>
+        <div>
+          <button class="btn btn-info register">新規登録</button>
+          <button class="btn btn-primary login">ログイン</button>
+        </div>
+      </div>
+    </div>
+  </header>
+
   <div class="container">
     <div class="content">
       <?= $this->fetch('content') ?>

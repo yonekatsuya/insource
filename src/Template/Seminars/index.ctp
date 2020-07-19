@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container search-box">
   <div class="row">
     <?= $this->Form->create($entity,['type'=>'get','url'=>['action'=>'search']]) ?>
     研修名：<?= $this->Form->text('name') ?>
