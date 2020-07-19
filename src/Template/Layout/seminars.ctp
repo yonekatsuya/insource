@@ -5,6 +5,7 @@
   <title>
     <?= $this->fetch('title') ?>
   </title>
+  <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css">
   <?php
   echo $this->Html->css('bootstrap.min.css');
   echo $this->Html->css('main.css');
@@ -20,8 +21,9 @@
     </div>
   </div>
 
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
   <?php
-  echo $this->Html->script('jquery-3.5.1.slim.min.js');
   echo $this->Html->script('bootstrap.bundle.min.js');
   echo $this->Html->script('main.js');
   ?>
