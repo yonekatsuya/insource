@@ -35,3 +35,13 @@
     <?php endforeach; ?>
   </tbody>
 </table>
+
+<div class="paginator">
+  <ul class="pagination justify-content-center">
+      <?= $this->Paginator->first(' << first ') ?>
+      <?= $this->Paginator->prev(' < prev ') ?>
+      <?= $this->Paginator->numbers() ?>
+      <?= $this->Paginator->next(' next > ') ?>
+      <?= $this->Paginator->last(' last >> ') ?>
+  </ul>
+</div>
