@@ -79,4 +79,10 @@ $(function() {
     },200);
   });
 
+  // 申し込みキャンセル
+  $(document).on('click','.seminar-cancel-btn',function() {
+    $id = $(this).parents('tr').find('.seminar-id').val();
+    $('.seminar-cancel').val($id);
+  });
+
 });

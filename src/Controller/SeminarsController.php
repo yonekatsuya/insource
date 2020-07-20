@@ -20,6 +20,8 @@ class SeminarsController extends AppController {
     $this->viewBuilder()->Layout('Seminars');
     $this->loadComponent('paginator');
     $this->Flash = $this->loadComponent('Flash');
+
+    $this->set('order',$this->Orders->newEntity());
   }
 
   public function index() {

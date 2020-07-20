@@ -88,3 +88,9 @@ header {
   cursor: pointer;
   opacity: 0.8;
 }
+
+
+.seminar-order-title {
+  margin-top: 20px;
+  margin-bottom: 30px;
+}

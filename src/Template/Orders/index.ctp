@@ -1,3 +1,5 @@
+<h3 class="text-center seminar-order-title">申し込み研修一覧</h3>
+
 <table class="table table-bordered table-striped table-hover">
   <thead>
     <tr>
@@ -23,7 +25,7 @@
       <td class="amount"><?= $item[0]->amount ?></td>
       <td class="place"><?= $item[0]->place ?></td>
       <td>
-        <button class="btn btn-info">キャンセル</button>
+        <button class="btn btn-info seminar-cancel-btn" data-toggle="modal" data-target="#testModal1">キャンセル</button>
       </td>
     </tr>
     <?php endforeach; ?>
