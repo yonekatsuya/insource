@@ -23,6 +23,7 @@
         </div>
         <div>
           <?php if ($this->request->getSession()->read('Auth.User')) : ?>
+            <?= $this->Html->link('検討一覧','/considerations/index',['class'=>'btn btn-success']) ?>
             <?= $this->Html->link('申し込み一覧','/orders/index',['class'=>'btn btn-info']) ?>
             <button class="btn btn-primary logout" data-toggle="modal" data-target="#testModal">ログアウト</button>
           <?php else : ?>
@@ -49,6 +50,8 @@
 
   <?= $this->element('Orders/orderModal') ?>
   <?= $this->element('Orders/cancelModal') ?>;
+
+  <input type="hidden" class="login-id" value="<?= $login_id ?>">
 
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>

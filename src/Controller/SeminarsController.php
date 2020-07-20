@@ -15,13 +15,20 @@ class SeminarsController extends AppController {
 
   public function initialize() {
     $this->name = 'Seminars';
+
     $this->Users = TableRegistry::get('users');
     $this->Orders = TableRegistry::get('orders');
+    $this->Considerations = TableRegistry::get('considerations');
+
     $this->viewBuilder()->Layout('Seminars');
+
     $this->loadComponent('paginator');
     $this->Flash = $this->loadComponent('Flash');
 
     $this->set('order',$this->Orders->newEntity());
+    $session = $this->request->session();
+    $login_id = $session->read('LoginUser.id');
+    $this->set('login_id',$login_id);
   }
 
   public function index() {
@@ -30,6 +37,16 @@ class SeminarsController extends AppController {
     $this->set('order',$this->Orders->newEntity());
     $seminars = $this->paginate($this->Seminars);
     $this->set('seminars',$seminars);
+
+    $session = $this->request->session();
+    $id = $session->read('LoginUser.id');
+    $login_seminars = ($this->Considerations->find()->where(['user_id'=>$id]))->toArray();
+
+    $array = [];
+    foreach ($login_seminars as $item) {
+      $array[] = $item->seminar_id;
+    }
+    $this->set('login_seminars',$array);
   }
 
   public function search() {
@@ -73,6 +90,17 @@ class SeminarsController extends AppController {
       $seminars = $this->paginate($this->Seminars);
       $this->set('seminars',$seminars);
     }
+
+    $session = $this->request->session();
+    $id = $session->read('LoginUser.id');
+    $login_seminars = ($this->Considerations->find()->where(['user_id'=>$id]))->toArray();
+
+    $array = [];
+    foreach ($login_seminars as $item) {
+      $array[] = $item->seminar_id;
+    }
+    $this->set('login_seminars',$array);
+    
     $this->render('index');
   }
 

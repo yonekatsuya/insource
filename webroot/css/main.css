@@ -90,7 +90,7 @@ header {
 }
 
 
-.seminar-order-title {
+.seminar-order-title, .seminar-consideration-title {
   margin-top: 20px;
   margin-bottom: 30px;
 }

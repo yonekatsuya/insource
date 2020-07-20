@@ -1,4 +1,4 @@
-<h3 class="text-center seminar-order-title">申し込み研修一覧</h3>
+<h3 class="text-center seminar-consideration-title">検討リスト一覧</h3>
 
 <table class="table table-bordered table-striped table-hover">
   <thead>
@@ -12,7 +12,7 @@
     </tr>
   </thead>
   <tbody>
-    <?php foreach ($orders as $item) : ?>
+    <?php foreach ($considerations as $item) : ?>
     <tr>
       <?php
       $date = explode("/",$item[0]->date);
@@ -25,7 +25,7 @@
       <td class="amount"><?= $this->Number->format($item[0]->amount,['after'=>'円']) ?></td>
       <td class="place"><?= $item[0]->place ?></td>
       <td>
-        <button class="btn btn-info seminar-cancel-btn" data-toggle="modal" data-target="#testModal1">キャンセル</button>
+        <!-- <button class="btn btn-info seminar-cancel-btn" data-toggle="modal" data-target="#testModal1">キャンセル</button> -->
       </td>
     </tr>
     <?php endforeach; ?>

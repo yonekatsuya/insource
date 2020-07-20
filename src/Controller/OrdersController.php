@@ -9,7 +9,7 @@ class OrdersController extends AppController {
     $this->name = 'Orders';
 
     $this->set('order',$this->Orders->newEntity());
-
+    
     $this->Seminars = TableRegistry::get('seminars');
     $this->Users = TableRegistry::get('users');
 
@@ -42,6 +42,7 @@ class OrdersController extends AppController {
 
     $this->set('orders',$orders);
     $this->set('session',$session);
+    $this->set('login_id',$id);
   }
 
   public function store() {

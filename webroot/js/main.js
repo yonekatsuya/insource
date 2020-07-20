@@ -85,4 +85,30 @@ $(function() {
     $('.seminar-cancel').val($id);
   });
 
+
+  // 検討リストボタン押下時
+  $(document).on('click','.consider-btn',function() {
+    $(this).removeClass('btn-primary')
+           .addClass('btn-dark')
+           .css('opacity',0.4)
+           .text('検討追加済み');
+
+    var seminar_id = $(this).parents('tr').find('.seminar-id').val();
+    var user_id = $('.login-id').val();
+    
+    $.ajax({
+      type: 'post',
+      url: '/insource/considerations/store',
+      data: {
+        'seminar_id': seminar_id,
+        'user_id': user_id
+      },
+      dataType: 'text'
+    }).done(function(response) {
+      console.log(response);
+    }).fail(function(response) {
+      console.log(response);
+    });
+  });
+
 });

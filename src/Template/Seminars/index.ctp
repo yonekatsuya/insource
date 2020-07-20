@@ -47,7 +47,7 @@
       <td class="date"><?= 20 . $date ?></td>
       <td class="time"><?= $item->from_time . ' ~ ' . $item->to_time ?></td>
       <td class="name"><?= $item->name ?></td>
-      <td class="amount"><?= $item->amount ?></td>
+      <td class="amount"><?= $this->Number->format($item->amount,['after'=>'円']) ?></td>
       <td class="place"><?= $item->place ?></td>
       <?php
       if ($item->remain === 'on') {
@@ -57,7 +57,11 @@
       }
       ?>
       <td>
-      <button class="btn btn-primary">検討リストへ</button><br>
+      <?php if (in_array($item->id,$login_seminars)) : ?>
+        <button class="btn btn-dark" style="opacity:0.4;">検討追加済み</button><br>
+      <?php else : ?>
+        <button class="btn btn-primary consider-btn">検討リストへ</button><br>
+      <?php endif; ?>
       <button class="btn btn-danger order">お申し込み</button>
       </td>
     </tr>
