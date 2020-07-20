@@ -57,12 +57,18 @@
       }
       ?>
       <td>
+
       <?php if (in_array($item->id,$login_seminars)) : ?>
         <button class="btn btn-dark" style="opacity:0.4;">検討追加済み</button><br>
       <?php else : ?>
         <button class="btn btn-primary consider-btn">検討リストへ</button><br>
       <?php endif; ?>
-      <button class="btn btn-danger order">お申し込み</button>
+
+      <?php if (in_array($item->id,$order_seminars)) : ?>
+        <button class="btn btn-dark" style="opacity:0.4;">申し込み済</button>
+      <?php else : ?>
+        <button class="btn btn-danger order">お申し込み</button>
+      <?php endif; ?>
       </td>
     </tr>
     <?php endforeach; ?>

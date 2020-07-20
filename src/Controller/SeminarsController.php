@@ -38,6 +38,7 @@ class SeminarsController extends AppController {
     $seminars = $this->paginate($this->Seminars);
     $this->set('seminars',$seminars);
 
+    // 検討リストに追加済みかどうか判定するために、検討リスト一覧を取得
     $session = $this->request->session();
     $id = $session->read('LoginUser.id');
     $login_seminars = ($this->Considerations->find()->where(['user_id'=>$id]))->toArray();
@@ -47,6 +48,16 @@ class SeminarsController extends AppController {
       $array[] = $item->seminar_id;
     }
     $this->set('login_seminars',$array);
+
+    // 申し込み済みかどうか判定するために、申し込み一覧を取得
+    $order_seminars = ($this->Orders->find()->where(['user_id'=>$id]))->toArray();
+
+    $array2 = [];
+    foreach ($order_seminars as $item) {
+      $array2[] = $item->seminar_id;
+    }
+    $this->set('order_seminars',$array2);
+
   }
 
   public function search() {
@@ -91,6 +102,7 @@ class SeminarsController extends AppController {
       $this->set('seminars',$seminars);
     }
 
+    // 検討リストに追加済みかどうか判定するために、検討リスト一覧を取得
     $session = $this->request->session();
     $id = $session->read('LoginUser.id');
     $login_seminars = ($this->Considerations->find()->where(['user_id'=>$id]))->toArray();
@@ -100,7 +112,16 @@ class SeminarsController extends AppController {
       $array[] = $item->seminar_id;
     }
     $this->set('login_seminars',$array);
-    
+
+    // 申し込み済みかどうか判定するために、申し込み一覧を取得
+    $order_seminars = ($this->Orders->find()->where(['user_id'=>$id]))->toArray();
+
+    $array2 = [];
+    foreach ($order_seminars as $item) {
+      $array2[] = $item->seminar_id;
+    }
+    $this->set('order_seminars',$array2);
+
     $this->render('index');
   }
 
