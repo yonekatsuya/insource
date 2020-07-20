@@ -118,6 +118,14 @@ class UsersController extends AppController
         if ($this->request->is('post')) {
             $user = $this->Auth->identify();
             if ($user) {
+                $dummy_user = $this->Users->find()->where(['email'=>$this->request->data('email')]);
+                $session = $this->request->session();
+                $session->write('LoginUser.id',$dummy_user->toArray()[0]->id);
+                $session->write('LoginUser.name',$dummy_user->toArray()[0]->username);
+
+                $this->log($session->read('LoginUser.id'));
+                $this->log($session->read('LoginUser.name'));
+
                 $this->Auth->setUser($user);
                 $this->Flash->success('ログインが完了しました！');
                 return $this->redirect($this->Auth->redirectUrl());
@@ -130,6 +138,12 @@ class UsersController extends AppController
 
     public function logout() {
         $this->Auth->logout();
+
+        $session = $this->request->session();
+        $session->delete('LoginUser');
+        $this->log($session->read('LoginUser.id'));
+        $this->log($session->read('LoginUser.name'));
+        
         return $this->redirect(['controller'=>'Seminars','action'=>'index']);
     }
 }

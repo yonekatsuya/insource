@@ -20,7 +20,7 @@ class OrdersController extends AppController {
 
   public function store() {
     $order = $this->Orders->newEntity();
-    $this->log($this->Auth->user('id'));
+    $this->log($this->Auth->user());
     $this->log($this->request->data('order-id'));
     $order->user_id = $this->Auth->user('id');
     $order->seminar_id = $this->request->data('order-id');
