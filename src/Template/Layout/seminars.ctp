@@ -51,6 +51,7 @@
   <?= $this->element('Orders/orderModal') ?>
   <?= $this->element('Orders/cancelModal') ?>
   <?= $this->element('Considerations/orderModal') ?>
+  <?= $this->element('Considerations/cancel') ?>
 
   <input type="hidden" class="login-id" value="<?= $login_id ?>">
 

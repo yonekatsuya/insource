@@ -62,6 +62,20 @@ class ConsiderationsController extends AppController {
   }
 
   public function delete() {
+    $session = $this->request->session();
 
+    $user_id = $session->read('LoginUser.id');
+    $seminar_id = $this->request->data('consideration-cancel');
+
+    $consideration = $this->Considerations->find()->where(['user_id'=>$user_id])->andWhere(['seminar_id'=>$seminar_id]);
+    $result = $this->Considerations->deleteAll(['id' => $consideration->toArray()[0]->id]);
+
+    if ($result) {
+      $this->Flash->success('検討リストから削除しました。');
+    } else {
+      $this->Flash->error('検討リストから削除出来ませんでした。');
+    }
+
+    $this->redirect(['action'=>'index']);
   }
 }

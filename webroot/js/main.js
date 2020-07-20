@@ -149,4 +149,10 @@ $(function() {
     },200);
   });
 
+  // 検討リストから削除
+  $(document).on('click','.consideration-delete-btn',function() {
+    $id = $(this).parents('tr').find('.seminar-id').val();
+    $('.consideration-cancel').val($id);
+  });
+
 });
