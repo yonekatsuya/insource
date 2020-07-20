@@ -50,11 +50,22 @@ class OrdersController extends AppController {
     $order = $this->Orders->newEntity();
     $order->user_id = $session->read('LoginUser.id');
     $order->seminar_id = $this->request->data('order-id');
-    if ($this->Orders->save($order)) {
-      $this->Flash->success('研修の申し込みが完了しました。');
+
+    $confirm_order = $this->Orders->find()->where(['user_id'=>$order->user_id])->andWhere(['seminar_id'=>$order->seminar_id]);
+
+    $result = empty($confirm_order->toArray());
+
+    if ($result) {
+      if ($this->Orders->save($order)) {
+        $this->Flash->success('研修の申し込みが完了しました。');
+      } else {
+        $this->Flash->error('研修の申し込みに失敗しました。');
+      }
     } else {
-      $this->Flash->error('研修の申し込みに失敗しました。');
+      $this->Flash->error('既に申し込み済みです。');
+      $this->redirect(['controller'=>'Seminars','action'=>'index']);
     }
+
     $this->redirect(['action'=>'index']);
   }
   
