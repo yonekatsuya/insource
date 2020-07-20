@@ -5,7 +5,7 @@
   <div class="login-modal-content">
     <div class="login-modal-content-wrap">
       <div class="close">×</div>
-      <?= $this->Form->create() ?>
+      <?= $this->Form->create($user,['url'=>['controller'=>'Users','action'=>'login']]) ?>
       <fieldset>
         <legend><?= __('ユーザー名とパスワードを入力してください') ?></legend>
         <?= $this->Form->control('email') ?>

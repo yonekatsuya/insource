@@ -119,9 +119,12 @@ class UsersController extends AppController
             $user = $this->Auth->identify();
             if ($user) {
                 $this->Auth->setUser($user);
+                $this->Flash->success('ログインが完了しました！');
                 return $this->redirect($this->Auth->redirectUrl());
+            } else {
+                $this->Flash->error(__('ユーザ名もしくはパスワードが間違っています'));
+                return $this->redirect(['controller'=>'Seminars','action'=>'index']);
             }
-            $this->Flash->error(__('ユーザ名もしくはパスワードが間違っています'));
         }
     }
 

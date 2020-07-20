@@ -20,42 +20,9 @@ class SeminarsController extends AppController {
     $this->viewBuilder()->Layout('Seminars');
     $this->loadComponent('paginator');
     $this->Flash = $this->loadComponent('Flash');
-    $this->Auth = $this->loadComponent('Auth',[
-      'authenticate'=> [
-        'Form' =>['useModel' => 'Seminars',
-        'fields' => ['username'=>'email','password'=>'password'],
-        'finder'=>'auth']
-      ],
-      'loginAction' => [
-        'controller' => 'Seminars',
-        'action' => 'index'
-      ],
-      'loginRedirect' => [
-          'controller' => 'Seminars',
-          'action' => 'index'
-      ],
-      'logoutRedirect' => [
-          'controller' => 'Seminars',
-          'action' => 'index',
-          'home'
-      ],
-      'authorize' => ['Controller']
-    ]);
   }
 
   public function index() {
-    if ($this->request->is('post')) {
-      $user = $this->Auth->identify();
-      if ($user) {
-        $this->Auth->setUser($user);
-        $this->log($this->Auth->user());
-        $this->Flash->success(__('ログインが完了しました！'));
-        return $this->redirect($this->Auth->redirectUrl());
-      } else {
-        $this->log('test1');
-        $this->Flash->error(__('ユーザ名もしくはパスワードが間違っています'));
-      }
-    }
     $this->set('entity',$this->Seminars->newEntity());
     $this->set('user',$this->Users->newEntity());
     $this->set('order',$this->Orders->newEntity());
