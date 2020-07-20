@@ -25,7 +25,8 @@
       <td class="amount"><?= $this->Number->format($item[0]->amount,['after'=>'円']) ?></td>
       <td class="place"><?= $item[0]->place ?></td>
       <td>
-        <!-- <button class="btn btn-info seminar-cancel-btn" data-toggle="modal" data-target="#testModal1">キャンセル</button> -->
+        <button class="btn btn-info order-consideration">申し込む</button><br>
+        <button class="btn btn-danger consideration-delete-btn" data-toggle="modal" data-target="#testModal3">削除</button>
       </td>
     </tr>
     <?php endforeach; ?>

@@ -49,7 +49,8 @@
   <?= $this->element('Seminars/logoutModal') ?>
 
   <?= $this->element('Orders/orderModal') ?>
-  <?= $this->element('Orders/cancelModal') ?>;
+  <?= $this->element('Orders/cancelModal') ?>
+  <?= $this->element('Considerations/orderModal') ?>
 
   <input type="hidden" class="login-id" value="<?= $login_id ?>">
 

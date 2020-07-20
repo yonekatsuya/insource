@@ -10,6 +10,9 @@ class ConsiderationsController extends AppController {
     $this->Auth = $this->loadComponent('Auth');
     $this->Seminars = TableRegistry::get('seminars');
     $this->Users = TableRegistry::get('users');
+    $this->Orders = TableRegistry::get('orders');
+
+    $this->set('order',$this->Orders->newEntity());
 
     $this->viewBuilder()->Layout('Seminars');
 

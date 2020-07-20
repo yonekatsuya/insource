@@ -12,6 +12,7 @@ class OrdersController extends AppController {
     
     $this->Seminars = TableRegistry::get('seminars');
     $this->Users = TableRegistry::get('users');
+    $this->Considerations = TableRegistry::get('considerations');
 
     $this->viewBuilder()->Layout('Seminars');
 
@@ -50,7 +51,12 @@ class OrdersController extends AppController {
 
     $order = $this->Orders->newEntity();
     $order->user_id = $session->read('LoginUser.id');
-    $order->seminar_id = $this->request->data('order-id');
+
+    if ($this->request->data('consideration-flag')) {
+      $order->seminar_id = $this->request->data('consideration-order-id');
+    } else {
+      $order->seminar_id = $this->request->data('order-id');
+    }
 
     $confirm_order = $this->Orders->find()->where(['user_id'=>$order->user_id])->andWhere(['seminar_id'=>$order->seminar_id]);
 
@@ -58,6 +64,12 @@ class OrdersController extends AppController {
 
     if ($result) {
       if ($this->Orders->save($order)) {
+        // 申し込み研修を検討リストから削除する
+        if ($this->request->data('consideration-flag')) {
+          $consideration = $this->Considerations->find()->where(['user_id'=>$order->user_id])->andWhere(['seminar_id'=>$order->seminar_id]);
+          $this->Considerations->deleteAll(['id'=>$consideration->toArray()[0]->id]);
+        }
+
         $this->Flash->success('研修の申し込みが完了しました。');
       } else {
         $this->Flash->error('研修の申し込みに失敗しました。');

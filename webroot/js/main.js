@@ -111,4 +111,42 @@ $(function() {
     });
   });
 
+
+  // 検討リストからの申し込みボタン押下時の処理
+  $(document).on('click','.order-consideration',function() {
+    $('.consideration-order-modal').animate({
+      top: '0'
+    },200);
+    $('.consideration-order-modal-wrap').animate({
+      top: '0'
+    },200);
+
+    $dateText = $(this).parents('tr').find('.date').text();
+    $timeText = $(this).parents('tr').find('.time').text();
+    $nameText = $(this).parents('tr').find('.name').text();
+    $amountText = $(this).parents('tr').find('.amount').text();
+    $placeText = $(this).parents('tr').find('.place').text();
+    $remainText = $(this).parents('tr').find('.remain').text();
+    $id = $(this).parents('tr').find('.seminar-id').val();
+    
+    $('.consideration-order-modal-wrap .consideration-order-id').val($id);
+    $('.consideration-order-modal-wrap .consideration-seminar-name span').text($nameText);
+    $('.consideration-order-modal-wrap .consideration-seminar-date span').text($dateText);
+    $('.consideration-order-modal-wrap .consideration-seminar-time span').text($timeText);
+    $('.consideration-order-modal-wrap .consideration-seminar-amount span').text($amountText);
+    $('.consideration-order-modal-wrap .consideration-seminar-place span').text($placeText);
+    $('.consideration-order-modal-wrap .consideration-seminar-remain span').text($remainText);
+
+  });
+
+  // 検討リストからの申し込みモーダル非表示
+  $(document).on('click','.consideration-order-modal-content-wrap .close',function() {
+    $('.consideration-order-modal').animate({
+      top: '-100%'
+    },200);
+    $('.consideration-order-modal-wrap').animate({
+      top: '-100%'
+    },200);
+  });
+
 });
