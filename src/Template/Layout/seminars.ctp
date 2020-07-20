@@ -22,8 +22,12 @@
           <?= $this->Html->link('研修管理システム','/seminars',['class'=>'header-title']) ?>
         </div>
         <div>
-          <button class="btn btn-info register">新規登録</button>
-          <button class="btn btn-primary login">ログイン</button>
+          <?php if ($this->request->getSession()->read('Auth.User')) : ?>
+            <button class="btn btn-primary logout" data-toggle="modal" data-target="#testModal">ログアウト</button>
+          <?php else : ?>
+            <button class="btn btn-info register">新規登録</button>
+            <button class="btn btn-primary login">ログイン</button>
+          <?php endif; ?>
         </div>
       </div>
     </div>
@@ -39,6 +43,8 @@
 
   <?= $this->element('Seminars/registerModal') ?>
   <?= $this->element('Seminars/loginModal') ?>
+
+  <?= $this->element('Seminars/logoutModal') ?>
 
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>

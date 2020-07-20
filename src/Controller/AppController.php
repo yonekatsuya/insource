@@ -61,7 +61,8 @@ class AppController extends Controller
             ],
             'authenticate' => [
                 'Form' => [
-                    'fields' => ['name' => 'email', 'password' => 'pass']
+                    'useModel' => 'Seminars',
+                    'fields' => ['username' => 'email', 'password' => 'password']
                 ]
             ],
         ]);

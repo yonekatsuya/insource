@@ -50,7 +50,7 @@ class UsersController extends AppController
     {
         $user = $this->Users->newEntity();
         if ($this->request->is('post')) {
-            $user->name = $this->request->data['name'];
+            $user->username = $this->request->data['username'];
             $user->email = $this->request->data['email'];
             $user->password = $this->request->data['password'];
             if ($this->Users->save($user)) {
@@ -126,6 +126,7 @@ class UsersController extends AppController
     }
 
     public function logout() {
-        return $this->redirect($this->Auth->logout());
+        $this->Auth->logout();
+        return $this->redirect(['controller'=>'Seminars','action'=>'index']);
     }
 }

@@ -62,7 +62,7 @@ class UsersTable extends Table
 
         $validator
             ->scalar('password')
-            ->maxLength('password', 200)
+            ->maxLength('password', 255)
             ->requirePresence('password', 'create')
             ->notEmptyString('password');
 
@@ -77,6 +77,13 @@ class UsersTable extends Table
             ->notEmptyDateTime('updated_at');
 
         return $validator;
+    }
+
+    public function findAuth(\Cake\ORM\Query $query,array $options){
+        $query
+            ->select(['email','password']);
+
+            return $query;
     }
 
     /**
