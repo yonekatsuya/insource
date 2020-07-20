@@ -42,7 +42,7 @@ header {
 }
 
 
-.register-modal, .login-modal {
+.register-modal, .login-modal, .order-modal {
   height: 100vh;
   width: 100vw;
   background-color: #c0c0c0;
@@ -52,7 +52,7 @@ header {
   opacity: 0.8;
 }
 
-.register-modal-wrap, .login-modal-wrap {
+.register-modal-wrap, .login-modal-wrap, .order-modal-wrap {
   height: 100vh;
   width: 100vw;
   position: fixed;
@@ -60,7 +60,7 @@ header {
   left: 0;
 }
 
-.register-modal-content, .login-modal-content {
+.register-modal-content, .login-modal-content, .order-modal-content {
   position: absolute;
   top: 50%;
   left: 50%;
@@ -70,13 +70,13 @@ header {
   background-color: white;
 }
 
-.register-modal-content-wrap, .login-modal-content-wrap {
+.register-modal-content-wrap, .login-modal-content-wrap, .order-modal-content-wrap {
   position: relative;
   height: 100%;
   width: 100%;
 }
 
-.register-modal-content-wrap .close, .login-modal-content-wrap .close {
+.register-modal-content-wrap .close, .login-modal-content-wrap .close, .order-modal-content-wrap .close {
   position: absolute;
   top: 0;
   right: 0;
@@ -84,7 +84,7 @@ header {
   font-weight: bold;
 }
 
-.register-modal-content-wrap .close:hover, .login-modal-content-wrap .close:hover {
+.register-modal-content-wrap .close:hover, .login-modal-content-wrap .close:hover, .order-modal-content-wrap .close:hover {
   cursor: pointer;
   opacity: 0.8;
 }

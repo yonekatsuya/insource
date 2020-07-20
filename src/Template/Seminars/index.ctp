@@ -43,23 +43,22 @@
       $date = explode("/",$item->date);
       $date = $date[2] . '/' . $date[0] . '/' . $date[1];
       ?>
-      <td><?= 20 . $date ?></td>
-      <td><?= $item->from_time . ' ~ ' . $item->to_time ?></td>
-      <td><?= $item->name ?></td>
-      <td><?= $item->amount ?></td>
-      <td><?= $item->place ?></td>
-      <td>
+      <input type="hidden" class="seminar-id" value="<?= $item->id ?>">
+      <td class="date"><?= 20 . $date ?></td>
+      <td class="time"><?= $item->from_time . ' ~ ' . $item->to_time ?></td>
+      <td class="name"><?= $item->name ?></td>
+      <td class="amount"><?= $item->amount ?></td>
+      <td class="place"><?= $item->place ?></td>
       <?php
       if ($item->remain === 'on') {
-        echo '◯';
+        echo '<td class="remain">◯</td>';
       } else {
-        echo '×';
+        echo '<td class="remain">×</td>';
       }
       ?>
-      </td>
       <td>
-      <a class="btn btn-primary" href="#" role="button">検討リストへ</a><br>
-      <a class="btn btn-danger" href="#" role="button">お申し込み</a>
+      <button class="btn btn-primary">検討リストへ</button><br>
+      <button class="btn btn-danger order">お申し込み</button>
       </td>
     </tr>
     <?php endforeach; ?>

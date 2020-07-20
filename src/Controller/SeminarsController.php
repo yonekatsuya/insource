@@ -16,6 +16,7 @@ class SeminarsController extends AppController {
   public function initialize() {
     $this->name = 'Seminars';
     $this->Users = TableRegistry::get('users');
+    $this->Orders = TableRegistry::get('orders');
     $this->viewBuilder()->Layout('Seminars');
     $this->loadComponent('paginator');
     $this->Flash = $this->loadComponent('Flash');
@@ -57,6 +58,7 @@ class SeminarsController extends AppController {
     }
     $this->set('entity',$this->Seminars->newEntity());
     $this->set('user',$this->Users->newEntity());
+    $this->set('order',$this->Orders->newEntity());
     $seminars = $this->paginate($this->Seminars);
     $this->set('seminars',$seminars);
   }
@@ -64,6 +66,7 @@ class SeminarsController extends AppController {
   public function search() {
     $this->set('entity',$this->Seminars->newEntity());
     $this->set('user',$this->Users->newEntity());
+    $this->set('order',$this->Orders->newEntity());
     if ($this->request->is('get')) {
       $name = $this->request->query['name'];
       $place = $this->request->query['place'];
