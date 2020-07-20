@@ -23,6 +23,7 @@
         </div>
         <div>
           <?php if ($this->request->getSession()->read('Auth.User')) : ?>
+            <?= $this->Html->link('申し込み一覧','/orders/index',['class'=>'btn btn-info']) ?>
             <button class="btn btn-primary logout" data-toggle="modal" data-target="#testModal">ログアウト</button>
           <?php else : ?>
             <button class="btn btn-info register">新規登録</button>
