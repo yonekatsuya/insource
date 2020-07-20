@@ -10,12 +10,12 @@
       </div>
       <?= $this->Form->create($order,['url'=>['controller'=>'Orders','action'=>'store']]) ?>
       <?= $this->Form->hidden('order-id',['value'=>'','class'=>'order-id']) ?>
-      <div class="seminar-name">研修名：</div>
-      <div class="seminar-date">日付：</div>
-      <div class="seminar-time">時間：</div>
-      <div class="seminar-amount">料金：</div>
-      <div class="seminar-place">場所：</div>
-      <div class="seminar-remain">残り席：</div>
+      <div class="seminar-name">研修名：<span></span></div>
+      <div class="seminar-date">日付：<span></span></div>
+      <div class="seminar-time">時間：<span></span></div>
+      <div class="seminar-amount">料金：<span></span></div>
+      <div class="seminar-place">場所：<span></span></div>
+      <div class="seminar-remain">残り席：<span></span></div>
       <?= $this->Form->button('Submit') ?>
       <?= $this->Form->end() ?>
     </div>

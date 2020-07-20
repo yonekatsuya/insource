@@ -60,12 +60,12 @@ $(function() {
     $id = $(this).parents('tr').find('.seminar-id').val();
     
     $('.order-modal-wrap .order-id').val($id);
-    $('.order-modal-wrap .seminar-name').append($nameText);
-    $('.order-modal-wrap .seminar-date').append($dateText);
-    $('.order-modal-wrap .seminar-time').append($timeText);
-    $('.order-modal-wrap .seminar-amount').append($amountText);
-    $('.order-modal-wrap .seminar-place').append($placeText);
-    $('.order-modal-wrap .seminar-remain').append($remainText);
+    $('.order-modal-wrap .seminar-name span').text($nameText);
+    $('.order-modal-wrap .seminar-date span').text($dateText);
+    $('.order-modal-wrap .seminar-time span').text($timeText);
+    $('.order-modal-wrap .seminar-amount span').text($amountText);
+    $('.order-modal-wrap .seminar-place span').text($placeText);
+    $('.order-modal-wrap .seminar-remain span').text($remainText);
 
   });
 
