@@ -62,12 +62,20 @@ class OrdersController extends AppController {
 
     $result = empty($confirm_order->toArray());
 
+    // 既に申し込み済であるかどうかを判定し、まだ申し込んでない場合申し込み処理を行う
     if ($result) {
       if ($this->Orders->save($order)) {
-        // 申し込み研修を検討リストから削除する
+        // 検討リストからの申し込みの時、申し込み研修を検討リストから削除する
         if ($this->request->data('consideration-flag')) {
           $consideration = $this->Considerations->find()->where(['user_id'=>$order->user_id])->andWhere(['seminar_id'=>$order->seminar_id]);
           $this->Considerations->deleteAll(['id'=>$consideration->toArray()[0]->id]);
+        } else {
+          // 研修一覧ページからの申し込みで、その研修が検討リスト一覧にあれば、検討リストから削除する
+          $consideration = $this->Considerations->find()->where(['user_id'=>$order->user_id])->andWhere(['seminar_id'=>$order->seminar_id]);
+          $result2 = empty($consideration->toArray());
+          if (!$result2) {
+            $this->Considerations->deleteAll(['id'=>$consideration->toArray()[0]->id]);
+          }
         }
 
         $this->Flash->success('研修の申し込みが完了しました。');

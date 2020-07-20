@@ -58,17 +58,22 @@
       ?>
       <td>
 
-      <?php if (in_array($item->id,$login_seminars)) : ?>
-        <button class="btn btn-dark" style="opacity:0.4;">検討追加済み</button><br>
-      <?php else : ?>
-        <button class="btn btn-primary consider-btn">検討リストへ</button><br>
-      <?php endif; ?>
-
+      <!-- 申し込み済かどうか判定 -->
       <?php if (in_array($item->id,$order_seminars)) : ?>
+        <!-- 申し込み済であれば、申し込み済ボタンのみ表示 -->
         <button class="btn btn-dark" style="opacity:0.4;">申し込み済</button>
       <?php else : ?>
+        <!-- 申し込み済でなければ、検討リストボタンを表示する -->
+        <?php if (in_array($item->id,$login_seminars)) : ?>
+          <!-- 検討リスト追加済であれば、検討リスト追加済のボタンを表示する -->
+          <button class="btn btn-dark" style="opacity:0.4;">検討追加済み</button><br>
+        <?php else : ?>
+          <button class="btn btn-primary consider-btn">検討リストへ</button><br>
+        <?php endif; ?>
+
         <button class="btn btn-danger order">お申し込み</button>
       <?php endif; ?>
+
       </td>
     </tr>
     <?php endforeach; ?>
