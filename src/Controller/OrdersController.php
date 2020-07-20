@@ -19,10 +19,10 @@ class OrdersController extends AppController {
   }
 
   public function store() {
+    $session = $this->request->session();
+    
     $order = $this->Orders->newEntity();
-    $this->log($this->Auth->user());
-    $this->log($this->request->data('order-id'));
-    $order->user_id = $this->Auth->user('id');
+    $order->user_id = $session->read('LoginUser.id');
     $order->seminar_id = $this->request->data('order-id');
     if ($this->Orders->save($order)) {
       $this->Flash->success('研修の申し込みが完了しました。');
